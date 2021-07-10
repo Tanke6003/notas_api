@@ -1,0 +1,19 @@
+{
+  "name": "notas_api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tanke6003/notas_api.git"
+  },
+  "author": "Tanke6003",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tanke6003/notas_api/issues"
+  },
+  "homepage": "https://github.com/Tanke6003/notas_api#readme"
+}
