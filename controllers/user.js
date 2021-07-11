@@ -18,11 +18,7 @@ async function signUp(req, res) {
             let passwordHash = await securityFunctions.bcryptHashFunc(req.body.password);
             let token = await securityFunctions.createToken(req.body.email);
             await userModel.signUp({
-                name : req.body.name,
-                lastName : req.body.lastName,
-                weight : req.body.weight,
-                height : req.body.height,
-                imc : req.body.imc,
+                nickName: req.body.nickName,
                 email: req.body.email,
                 password: passwordHash
             });
@@ -62,12 +58,12 @@ async function signIn(req, res) {
             res.send(data);
             return;
         }
-        let password = req.password;
+        let password = exist.password;
         let verifypass = await securityFunctions.bcryptCompareFunc(req.body.password,password);
         if(verifypass){
             let token = await securityFunctions.createToken(req.body.email);
             let idData = await userModel.getIdByEmail(req.body.email);
-            let id = idData.id;
+            let id = idData.idUser;
             await securityModel.setToken(token,id);
             let data = {
                 status: true,

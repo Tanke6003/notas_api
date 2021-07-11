@@ -14,7 +14,7 @@ function getPasswordByEmail(email){
 } 
 function getIdByEmail(email){
     let query =  `
-        select id from user where email = ?
+        select idUser from user where email = ?
     `
     return connection.runQueryRow(query,[email]);
 }
