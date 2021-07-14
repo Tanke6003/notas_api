@@ -39,7 +39,7 @@ async function createNote(req, res) {
 }
 async function getNotes(req,res){
     try {
-        let dataToken = await securityModel.checkToken(req.body.token);
+        let dataToken = await securityModel.checkToken(req.query.token);
         if (!dataToken) {
             let data = {
                 errorMessage: constants.INVALID_TOKEN_MESSAGE,
@@ -66,8 +66,38 @@ async function getNotes(req,res){
         res.status(500).send(data);
     }
 }
+async function getNote(req,res){
+    try {
+        let dataToken = await securityModel.checkToken(req.body.token);
+        if (!dataToken) {
+            let data = {
+                errorMessage: constants.INVALID_TOKEN_MESSAGE,
+                session: false
+            }
+            res.send(data);
+            return;
+        }
+        let note = await noteModel.getNote(req.body.idNote);
+
+        let data = {
+            session: true,
+            note: note
+        }
+
+        res.send(data);
+
+    } catch (ex) {
+        console.log(ex);
+        let data = {
+            errorMessage: constants.CATCH_MESSAGE,
+            errorData: ex
+        }
+        res.status(500).send(data);
+    }
+}
 module.exports={
     createNote,
-    getNotes
+    getNotes,
+    getNote
 }
 

@@ -21,8 +21,15 @@ function updateNote(idNote){
     `
     return connection.runQuery(query,[idNote]);
 }
-module.exports()={
+function getNote(idNote){
+    let query =  `
+        select * from note where idNote = ?
+    `
+    return connection.runQueryRow(query,[idNote]);
+}
+module.exports={
 createNote,
 getNotesByIdUser,
-updateNote
+updateNote,
+getNote
 }
