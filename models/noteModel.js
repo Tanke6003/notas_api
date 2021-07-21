@@ -13,13 +13,13 @@ function getNotesByIdUser(idUser){
     `
     return connection.runQuery(query,[idUser]);
 }
-function updateNote(idNote){
+function updateNote({idNote,title,description}){
     let query =  `
         Update note
-        Set  title = ? , desciption = ? , date = current_timestamp
+        Set  title = ? , description = ? , date = current_timestamp
         Where idNote = ?
     `
-    return connection.runQuery(query,[idNote]);
+    return connection.runQuery(query,[title,description,idNote]);
 }
 function getNote(idNote){
     let query =  `
@@ -27,9 +27,16 @@ function getNote(idNote){
     `
     return connection.runQueryRow(query,[idNote]);
 }
+function deleteNote(idNote){
+    let query = `
+        delete from note where idNote = ?
+    `
+    return connection.runQuery(query,[idNote]);
+}
 module.exports={
 createNote,
 getNotesByIdUser,
 updateNote,
-getNote
+getNote,
+deleteNote
 }

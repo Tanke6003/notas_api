@@ -95,9 +95,55 @@ async function getNote(req,res){
         res.status(500).send(data);
     }
 }
+async function editNote(req,res){
+    try {
+        let id = req.body.idNote
+        let noteData = req.body.note;
+        dataNote = {
+            idNote:id,
+            title:noteData.title,
+            description:noteData.description
+        }
+        await noteModel.updateNote(dataNote);
+        let data = {
+            status: true
+        }
+        res.send(data);
+    } catch (ex) {
+        console.log(ex);
+        let data = {
+            errorMessage: constants.CATCH_MESSAGE,
+            errorData: ex,
+            status: false
+        }
+        res.status(500).send(data);
+    }
+
+}
+async function deleteNote(req,res){
+    try {
+        let id = req.body.idNote
+        await noteModel.deleteNote(id);
+        let data = {
+            status: true
+        }
+        res.send(data);
+    } catch (ex) {
+        console.log(ex);
+        let data = {
+            errorMessage: constants.CATCH_MESSAGE,
+            errorData: ex,
+            status: false
+        }
+        res.status(500).send(data);
+    }
+
+}
 module.exports={
     createNote,
     getNotes,
-    getNote
+    getNote,
+    editNote,
+    deleteNote
 }
 

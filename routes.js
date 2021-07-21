@@ -13,6 +13,10 @@ const loadRoutes = (app) => {
     app.get('/notes',noteController.getNotes);
     //note
     app.post('/detalles-nota',noteController.getNote);
+    app.post('/detalles-nota/delete',noteController.deleteNote);
+    //edit note
+    app.post('/edit-note/getNote',noteController.getNote);
+    app.post('/edit-note/editNote',noteController.editNote);
 }
 module.exports = {
     loadRoutes
