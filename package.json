@@ -1,0 +1,23 @@
+{
+  "name": "apicatalogo",
+  "version": "1.0.0",
+  "description": "api para catalogo",
+  "main": "index.js",
+  "scripts": {
+    "test": "start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tanke6003/apiCatalogo.git"
+  },
+  "keywords": [
+    "catalogo",
+    "api"
+  ],
+  "author": "Tanke6003",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tanke6003/apiCatalogo/issues"
+  },
+  "homepage": "https://github.com/Tanke6003/apiCatalogo#readme"
+}
